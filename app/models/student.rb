@@ -1,4 +1,8 @@
 class Student < ApplicationRecord
+#  Had help, very interesting, would not have thought of on my own
+  def self.by_name(name)
+    Student.where("first_name LIKE ? OR last_name LIKE ?", "%#{name}", "%#{name}")
+  end
 
   def to_s
     "#{first_name} #{last_name}"
